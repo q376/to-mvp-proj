@@ -4,7 +4,7 @@
 // ===== Configuration =====
 const CONFIG = {
     API_URL: "https://backend-51rt.onrender.com",
-    MANIFEST_URL: "https://tonnaton.netlify.app/toncon-manifest.json"
+    MANIFEST_URL: "https://tonnaton.netlify.app/tonconnect-manifest.json"
 };
 
 // ===== Global State =====
