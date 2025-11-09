@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TonArcade - Legal Documents</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            color: #fff;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(78, 205, 196, 0.2);
+            border-color: #4ecdc4;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            border-color: #4ecdc4;
+            color: #000;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #4ecdc4;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #ffd700;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .highlight {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        .warning {
+            background: rgba(255, 107, 107, 0.2);
+            border-left: 4px solid #ff6b6b;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .info {
+            background: rgba(78, 205, 196, 0.2);
+            border-left: 4px solid #4ecdc4;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .updated {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            color: #000;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('terms')">Terms of Service</button>
+            <button class="tab-btn" onclick="showTab('privacy')">Privacy Policy</button>
+            <button class="tab-btn" onclick="showTab('disclaimer')">Disclaimer</button>
+        </div>
+
+        <!-- TERMS OF SERVICE -->
+        <div id="terms" class="tab-content active">
+            <h1>📜 Terms of Service</h1>
+            <p class="updated">Last Updated: November 2025</p>
+
+            <div class="info">
+                <strong>🎮 Important:</strong> TonArcade is an educational hobby project created by a student developer. By using this platform, you acknowledge that this is a beta project in active development.
+            </div>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing and using TonArcade ("the Platform"), you agree to these Terms of Service. If you do not agree, please do not use the Platform.</p>
+
+            <h2>2. About TonArcade</h2>
+            <p>TonArcade is a <span class="highlight">skill-based gaming platform</span> that allows users to play casual games. The Platform is:</p>
+            <ul>
+                <li>A hobby project created for educational purposes</li>
+                <li>In active development (Beta/MVP stage)</li>
+                <li>Subject to changes, updates, and potential downtime</li>
+                <li>Currently offering free-to-play games</li>
+            </ul>
+
+            <h2>3. User Eligibility</h2>
+            <p>To use TonArcade, you must:</p>
+            <ul>
+                <li>Be at least 13 years old (or the minimum age in your jurisdiction)</li>
+                <li>Have the legal capacity to enter into these terms</li>
+                <li>Comply with all applicable laws in your jurisdiction</li>
+                <li>Not be prohibited from using the Platform by any legal restrictions</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Future Features:</strong> When tournaments with real TON prizes are introduced, participants must be 18+ and comply with their local gambling/gaming laws. We reserve the right to verify age and jurisdiction.
+            </div>
+
+            <h2>4. Game Rules & Fair Play</h2>
+            <h3>4.1 Prohibited Activities</h3>
+            <p>You agree NOT to:</p>
+            <ul>
+                <li>Use bots, scripts, or automated tools to play games</li>
+                <li>Manipulate game scores or exploit bugs</li>
+                <li>Reverse engineer or hack the Platform</li>
+                <li>Create multiple accounts to gain unfair advantages</li>
+                <li>Harass, abuse, or harm other users</li>
+                <li>Use the Platform for any illegal activities</li>
+            </ul>
+
+            <h3>4.2 Consequences</h3>
+            <p>Violations may result in:</p>
+            <ul>
+                <li>Score invalidation</li>
+                <li>Account suspension or termination</li>
+                <li>Disqualification from tournaments (when available)</li>
+                <li>Forfeiture of any prizes or rewards</li>
+            </ul>
+
+            <h2>5. Wallet Connection & TON Integration</h2>
+            <p>TonArcade uses TON Connect to link your TON wallet. By connecting:</p>
+            <ul>
+                <li>You authorize the Platform to read your public wallet address</li>
+                <li>Your wallet address is stored to track your game progress</li>
+                <li>You remain in full control of your wallet at all times</li>
+                <li>We NEVER have access to your private keys or funds</li>
+            </ul>
+
+            <div class="info">
+                <strong>🔒 Security Note:</strong> Wallet addresses are public blockchain data. We only store what's already visible on the TON blockchain.
+            </div>
+
+            <h2>6. Future Features (Tournaments & Rewards)</h2>
+            <p>We plan to introduce tournaments with real TON prizes. When implemented:</p>
+            <ul>
+                <li>Entry fees and prize structures will be clearly stated</li>
+                <li>Tournaments are skill-based competitions, NOT gambling</li>
+                <li>Payouts will be automated via smart contracts (when possible)</li>
+                <li>Platform fees will be disclosed transparently</li>
+                <li>We reserve the right to cancel/modify tournaments if necessary</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ No Guarantees:</strong> Future features, rewards, and tournaments are subject to change or cancellation without notice. We do not guarantee any specific features, timelines, or reward amounts.
+            </div>
+
+            <h2>7. Intellectual Property</h2>
+            <p>All games, code, designs, and content on TonArcade are protected by copyright and intellectual property laws. You may not:</p>
+            <ul>
+                <li>Copy, modify, or distribute our games or code</li>
+                <li>Use our branding, logos, or designs without permission</li>
+                <li>Claim ownership of any Platform content</li>
+            </ul>
+
+            <h2>8. Limitation of Liability</h2>
+            <p>TonArcade is provided "AS IS" without warranties of any kind. We are NOT liable for:</p>
+            <ul>
+                <li>Service interruptions, bugs, or technical issues</li>
+                <li>Loss of data, scores, or progress</li>
+                <li>Issues with TON Connect, wallets, or blockchain transactions</li>
+                <li>Any financial losses related to using the Platform</li>
+                <li>Third-party services (ads, analytics, etc.)</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Use at Your Own Risk:</strong> This is a hobby project. While we strive for quality, we cannot guarantee 100% uptime or bug-free operation.
+            </div>
+
+            <h2>9. Third-Party Services</h2>
+            <p>TonArcade uses third-party services including:</p>
+            <ul>
+                <li><strong>TON Connect:</strong> For wallet integration (see their terms)</li>
+                <li><strong>Advertising Networks:</strong> May display ads (see Privacy Policy)</li>
+                <li><strong>Analytics:</strong> To improve the Platform</li>
+            </ul>
+            <p>We are not responsible for these third-party services.</p>
+
+            <h2>10. Changes to Terms</h2>
+            <p>We may update these Terms at any time. Changes will be posted here with an updated "Last Updated" date. Continued use of the Platform after changes constitutes acceptance of the new Terms.</p>
+
+            <h2>11. Termination</h2>
+            <p>We reserve the right to:</p>
+            <ul>
+                <li>Suspend or terminate your access for violations</li>
+                <li>Shut down the Platform at any time</li>
+                <li>Modify or discontinue features without notice</li>
+            </ul>
+
+            <h2>12. Governing Law</h2>
+            <p>These Terms are governed by the laws of Latvia and the European Union. Any disputes shall be resolved in accordance with Latvian law.</p>
+
+            <h2>13. Contact</h2>
+            <p>For questions about these Terms, contact us at: <strong>tonarcade@proton.me</strong></p>
+
+            <div class="info">
+                <strong>💬 Feedback Welcome:</strong> This is a learning project! If you find bugs or have suggestions, please reach out.
+            </div>
+        </div>
+
+        <!-- PRIVACY POLICY -->
+        <div id="privacy" class="tab-content">
+            <h1>🔒 Privacy Policy</h1>
+            <p class="updated">Last Updated: November 2025</p>
+
+            <div class="info">
+                <strong>TL;DR:</strong> We only store your public wallet address (which is already on the blockchain). We use minimal third-party services. We respect your privacy.
+            </div>
+
+            <h2>1. Introduction</h2>
+            <p>TonArcade ("we", "us", "our") respects your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our Platform.</p>
+
+            <h2>2. Information We Collect</h2>
+            
+            <h3>2.1 Wallet Address (Required)</h3>
+            <ul>
+                <li><strong>What:</strong> Your public TON wallet address</li>
+                <li><strong>How:</strong> Via TON Connect when you connect your wallet</li>
+                <li><strong>Why:</strong> To identify you, track your game progress, and prepare for future rewards</li>
+                <li><strong>Note:</strong> Wallet addresses are PUBLIC data already visible on the TON blockchain</li>
+            </ul>
+
+            <h3>2.2 Game Data</h3>
+            <ul>
+                <li>Game scores and timestamps</li>
+                <li>Games played</li>
+                <li>Achievement progress (future feature)</li>
+            </ul>
+
+            <h3>2.3 Technical Data (Automatic)</h3>
+            <ul>
+                <li>IP address (temporarily, for security)</li>
+                <li>Browser type and version</li>
+                <li>Device type (mobile/desktop)</li>
+                <li>Access times and pages viewed</li>
+            </ul>
+
+            <h3>2.4 Third-Party Data Collection</h3>
+            <p>The following third-party services may collect additional data:</p>
+            <ul>
+                <li><strong>TON Connect:</strong> Handles wallet connection (see their privacy policy)</li>
+                <li><strong>Advertising Networks (e.g., Bitmedia):</strong> May use cookies/tracking for ad targeting</li>
+                <li><strong>Analytics (if implemented):</strong> Anonymous usage statistics</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Cookies & Ads:</strong> Third-party ad networks may use cookies to show personalized ads. You can disable cookies in your browser settings.
+            </div>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>We use collected data to:</p>
+            <ul>
+                <li>Identify you across sessions (via wallet address)</li>
+                <li>Track your game scores and progress</li>
+                <li>Prevent cheating and ensure fair play</li>
+                <li>Distribute rewards (when tournaments are implemented)</li>
+                <li>Improve the Platform and fix bugs</li>
+                <li>Communicate important updates (if email is added later)</li>
+            </ul>
+
+            <h2>4. Data Sharing & Disclosure</h2>
+            <p>We do NOT sell your data. We may share data only in these cases:</p>
+            <ul>
+                <li><strong>Publicly:</strong> Leaderboards will display wallet addresses and scores (wallets are public anyway)</li>
+                <li><strong>Legal Requirements:</strong> If required by law or to prevent illegal activity</li>
+                <li><strong>Service Providers:</strong> Hosting, analytics, and ad networks (they have their own policies)</li>
+            </ul>
+
+            <h2>5. Your Rights (GDPR Compliance)</h2>
+            <p>Under EU/Latvian law (GDPR), you have the right to:</p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of your data</li>
+                <li><strong>Deletion:</strong> Request removal of your data (we'll delete your wallet address and scores)</li>
+                <li><strong>Correction:</strong> Update incorrect information</li>
+                <li><strong>Objection:</strong> Object to data processing</li>
+                <li><strong>Portability:</strong> Export your data</li>
+            </ul>
+
+            <div class="info">
+                <strong>📧 Exercise Your Rights:</strong> Email <strong>tonarcade@proton.me</strong> to request data access/deletion.
+            </div>
+
+            <h2>6. Data Security</h2>
+            <p>We take security seriously:</p>
+            <ul>
+                <li>Wallet addresses are stored securely in our database</li>
+                <li>We use HTTPS encryption for data transmission</li>
+                <li>No private keys or sensitive data are stored</li>
+                <li>Regular security updates and monitoring</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Disclaimer:</strong> No system is 100% secure. While we implement best practices, we cannot guarantee absolute security.
+            </div>
+
+            <h2>7. Data Retention</h2>
+            <ul>
+                <li><strong>Wallet addresses & scores:</strong> Stored indefinitely (unless you request deletion)</li>
+                <li><strong>Technical logs:</strong> Deleted after 30 days</li>
+                <li><strong>Ad cookies:</strong> Managed by third-party networks</li>
+            </ul>
+
+            <h2>8. Children's Privacy</h2>
+            <p>TonArcade is not intended for children under 13. We do not knowingly collect data from children. If you're under 13, please do not use the Platform.</p>
+
+            <h2>9. International Users</h2>
+            <p>TonArcade is operated from Latvia (EU). If you access the Platform from outside the EU, your data may be transferred to Latvia. By using the Platform, you consent to this transfer.</p>
+
+            <h2>10. Cookies</h2>
+            <p>We use minimal cookies:</p>
+            <ul>
+                <li><strong>Essential:</strong> To remember your wallet connection</li>
+                <li><strong>Third-Party:</strong> Ad networks may use cookies (see their policies)</li>
+            </ul>
+            <p>You can disable cookies in your browser, but this may affect functionality.</p>
+
+            <h2>11. Third-Party Links</h2>
+            <p>Our Platform may link to external websites (e.g., TON wallets, exchanges). We are not responsible for their privacy practices. Please review their policies.</p>
+
+            <h2>12. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy as we add features. Changes will be posted here with an updated date. Continued use means you accept the changes.</p>
+
+            <h2>13. Contact Us</h2>
+            <p>Questions about privacy? Email: <strong>tonarcade@proton.me</strong></p>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div id="disclaimer" class="tab-content">
+            <h1>⚠️ Legal Disclaimer</h1>
+            <p class="updated">Last Updated: November 2025</p>
+
+            <h2>1. General Disclaimer</h2>
+            <p>TonArcade is provided "AS IS" and "AS AVAILABLE" without any warranties, express or implied. Use the Platform at your own risk.</p>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> This is a hobby project created by a student developer for educational purposes. It is not a commercial product and is subject to bugs, downtime, and changes.
+            </div>
+
+            <h2>2. Not Gambling - Skill-Based Games</h2>
+            <p>TonArcade features <span class="highlight">skill-based games</span> only. We do NOT offer:</p>
+            <ul>
+                <li>Games of chance or luck</li>
+                <li>Casino-style gambling</li>
+                <li>Lotteries or random draws</li>
+                <li>Sports betting</li>
+            </ul>
+
+            <p>All games require player skill, strategy, and decision-making. Outcomes are determined by player performance, NOT random chance.</p>
+
+            <div class="info">
+                <strong>🎮 Legal Note:</strong> When tournaments with entry fees are introduced, they will comply with skill-gaming regulations, not gambling laws. However, YOU are responsible for ensuring participation is legal in your jurisdiction.
+            </div>
+
+            <h2>3. No Financial Advice</h2>
+            <p>TonArcade does NOT provide:</p>
+            <ul>
+                <li>Financial, investment, or tax advice</li>
+                <li>Cryptocurrency trading recommendations</li>
+                <li>Legal guidance</li>
+            </ul>
+            <p>Consult professionals for financial or legal matters.</p>
+
+            <h2>4. Cryptocurrency Risks</h2>
+            <p>Using TON cryptocurrency involves risks:</p>
+            <ul>
+                <li>Cryptocurrency values fluctuate</li>
+                <li>Blockchain transactions are irreversible</li>
+                <li>You are responsible for your wallet security</li>
+                <li>We do NOT hold your funds or private keys</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Wallet Security:</strong> NEVER share your private keys or seed phrases. TonArcade will NEVER ask for them. Protect your wallet with strong security measures.
+            </div>
+
+            <h2>5. No Guaranteed Rewards</h2>
+            <p>Future features (tournaments, prizes, rewards) are:</p>
+            <ul>
+                <li>Subject to change or cancellation</li>
+                <li>Not guaranteed to be implemented</li>
+                <li>Dependent on legal, technical, and financial feasibility</li>
+            </ul>
+            <p><strong>We make NO promises about future earnings, prize amounts, or reward timelines.</strong></p>
+
+            <h2>6. Platform Availability</h2>
+            <p>TonArcade may experience:</p>
+            <ul>
+                <li>Downtime, bugs, or technical issues</li>
+                <li>Service interruptions without notice</li>
+                <li>Data loss (we recommend not relying on stored data)</li>
+                <li>Feature changes or removals</li>
+            </ul>
+            <p>We strive for reliability but cannot guarantee 100% uptime.</p>
+
+            <h2>7. Third-Party Services</h2>
+            <p>We integrate third-party services (TON Connect, ad networks, hosting). We are NOT responsible for:</p>
+            <ul>
+                <li>Their functionality or security</li>
+                <li>Data they collect (see their policies)</li>
+                <li>Issues with wallet connections or transactions</li>
+            </ul>
+
+            <h2>8. User Responsibility</h2>
+            <p>YOU are responsible for:</p>
+            <ul>
+                <li>Ensuring use is legal in your jurisdiction</li>
+                <li>Protecting your wallet and private keys</li>
+                <li>Understanding cryptocurrency risks</li>
+                <li>Paying any applicable taxes on winnings</li>
+                <li>Your actions and behavior on the Platform</li>
+            </ul>
+
+            <h2>9. Limitation of Liability</h2>
+            <p>To the maximum extent permitted by law, TonArcade and its creator(s) are NOT liable for:</p>
+            <ul>
+                <li>Direct, indirect, or consequential damages</li>
+                <li>Loss of funds, data, or opportunities</li>
+                <li>Issues with third-party services</li>
+                <li>Blockchain transaction failures</li>
+                <li>Unauthorized access to your account</li>
+            </ul>
+
+            <h2>10. Beta/MVP Status</h2>
+            <p>TonArcade is in <span class="highlight">Beta/MVP stage</span>. This means:</p>
+            <ul>
+                <li>Features are incomplete and evolving</li>
+                <li>Bugs and issues are expected</li>
+                <li>Major changes may occur without notice</li>
+                <li>The project could be discontinued</li>
+            </ul>
+
+            <div class="info">
+                <strong>💡 Feedback Encouraged:</strong> As a beta project, we welcome bug reports and suggestions. Help us improve!
+            </div>
+
+            <h2>11. Jurisdictional Compliance</h2>
+            <p>Different countries have different laws regarding online gaming, cryptocurrencies, and contests. By using TonArcade, you confirm that:</p>
+            <ul>
+                <li>You are legally allowed to use the Platform in your location</li>
+                <li>You will not participate in activities prohibited by your local laws</li>
+                <li>You understand we cannot provide legal advice about your jurisdiction</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Your Responsibility:</strong> If skill-gaming, cryptocurrencies, or online competitions are restricted in your country, DO NOT use the Platform.
+            </div>
+
+            <h2>12. Age Restrictions</h2>
+            <p>Current free games: 13+ recommended</p>
+            <p>Future paid tournaments: 18+ required (or legal age in your jurisdiction)</p>
+
+            <h2>13. No Partnership or Endorsement</h2>
+            <p>TonArcade is an independent project. We are NOT:</p>
+            <ul>
+                <li>Affiliated with TON Foundation (though we build on TON)</li>
+                <li>Endorsed by any official blockchain entities</li>
+                <li>A registered financial or gaming company (yet)</li>
+            </ul>
+
+            <h2>14. Indemnification</h2>
+            <p>You agree to indemnify and hold harmless TonArcade and its creator(s) from any claims, damages, or expenses arising from:</p>
+            <ul>
+                <li>Your use of the Platform</li>
+                <li>Your violation of these terms</li>
+                <li>Your violation of any laws</li>
+            </ul>
+
+            <h2>15. Severability</h2>
+            <p>If any part of these terms is found unenforceable, the remaining provisions remain in effect.</p>
+
+            <h2>16. Contact</h2>
+            <p>Questions about this disclaimer? Email: <strong>tonarcade@proton.me</strong></p>
+
+            <div class="info">
+                <strong>🚀 Final Note:</strong> TonArcade is a passion project aimed at bringing fun games and crypto rewards together. We're learning as we go. Thanks for being part of the journey!
+            </div>
+        </div>
+
+        <a href="/" class="back-link">← Back to TonArcade</a>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
