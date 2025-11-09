@@ -155,11 +155,175 @@
             <button onclick="closeGame()">✖ Close</button>
         </div>
     </div>
+
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>TonArcade - Play Games, Earn TON</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+</head>
+<body>
+    <!-- Header - ->
+    <header>
+        <nav class="container">
+            <div class="logo">TonArcade</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')">🏠 Home</a></li>
+                <li><a href="#" onclick="showSection('games')">🎮 Games</a></li>
+                <li><a href="#" onclick="showSection('account')">👤 Account</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="auth-buttons">
+                <div id="ton-connect-button"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Section - ->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>TonArcade</h1>
+                <p>🎮 Play Free Games • Connect Your TON Wallet • More Coming Soon</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary" onclick="showSection('games')">🚀 Start Playing</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>⚡ How It Works</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-icon">🎮</span>
+                    <h3>Play Free Games</h3>
+                    <p>Jump into our growing arcade of classic games. No signup required, just play!</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">💎</span>
+                    <h3>Connect TON Wallet</h3>
+                    <p>Link your TON wallet to save your progress and prepare for future rewards.</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">🚀</span>
+                    <h3>Coming Soon</h3>
+                    <p>Tournaments, leaderboards, and real TON prizes are in development. Stay tuned!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section - ->
+    <section id="games" class="section">
+        <div class="container">
+            <h2>🎮 Available Games</h2>
+            
+            <h3>🎪 Arcade Classics</h3>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-icon">🦅</div>
+                    <h3>Flappy Crypto</h3>
+                    <p>Navigate through pipes in this addictive arcade hit!</p>
+                    <button class="btn btn-primary" onclick="playGame('flappy')">🚀 Play Now</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🔢</div>
+                    <h3>The 2048 Fusion</h3>
+                    <p>Merge the tiles to reach number 2048 and beyond!</p>
+                    <button class="btn btn-primary" onclick="playGame('2048')">🚀 Play Now</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🐍</div>
+                    <h3>Snake Evolution</h3>
+                    <p>Grow your snake without hitting the walls!</p>
+                    <button class="btn btn-primary" onclick="playGame('snake')">🚀 Play Now</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🎴</div>
+                    <h3>Memory Master</h3>
+                    <p>Test your memory by matching card pairs!</p>
+                    <button class="btn btn-primary" onclick="playGame('memory')">🚀 Play Now</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">💣</div>
+                    <h3>Mine Sweeper Pro</h3>
+                    <p>Clear the minefield without triggering explosions!</p>
+                    <button class="btn btn-primary" onclick="playGame('minesweeper')">🚀 Play Now</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">💥</div>
+                    <h3>Brick Breaker</h3>
+                    <p>Destroy all bricks with precision and skill!</p>
+                    <button class="btn btn-primary" onclick="playGame('breakout')">🚀 Play Now</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🏓</div>
+                    <h3>The Pong Game</h3>
+                    <p>Beat your opponent and don't lose the ball!</p>
+                    <button class="btn btn-primary" onclick="playGame('pong')">🚀 Play Now</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">⚡</div>
+                    <h3>Lightning Reaction</h3>
+                    <p>Test your reflexes! Click when it turns green!</p>
+                    <button class="btn btn-primary" onclick="playGame('reaction')">🚀 Play Now</button>
+                </div>
+            </div>
+
+            <div class="coming-soon" style="margin-top: 4rem;">
+                <h3>🏆 Tournaments & Rewards</h3>
+                <p>Competitive tournaments with real TON prizes are coming soon. Keep playing and improving your skills!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Section - ->
+    <section id="account" class="section">
+        <div class="container">
+            <h2>👤 My Account</h2>
+            <div id="account-info">
+                <div class="coming-soon">
+                    <h3>💎 Connect Your TON Wallet</h3>
+                    <p>Click the "Connect Wallet" button in the top right to link your TON wallet and get ready for future features!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer - ->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TonArcade - MVP Beta Version</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">🚧 Platform in Active Development</p>
+        </div>
+    </footer>
+
+    <!-- Game Player Modal - ->
+    <div id="game-modal">
+        <div>
+            <iframe id="game-frame" src=""></iframe>
+            <button onclick="closeGame()">✖ Close</button>
+        </div>
+    </div>
     <script type="module" src="utils.js"></script>
     <script type="module" src="script.js"></script>
 </body>
 
 </html>
+-->
 
 
 
