@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction - TonArcade</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cg fill-opacity='0.05'%3E%3Cpolygon fill='%23fff' points='50 0 60 40 100 50 60 60 50 100 40 60 0 50 40 40'/%3E%3C/g%3E%3C/svg%3E");
+            animation: particles 60s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes particles {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-100px, -100px); }
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 0.6s ease;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #4ecdc4, #ff6b6b, #ffd700, #4ecdc4);
+            background-size: 300%;
+            border-radius: 24px;
+            z-index: -1;
+            animation: glow 4s ease infinite;
+            opacity: 0.5;
+        }
+        
+        @keyframes glow {
+            0%, 100% { background-position: 0%; }
+            50% { background-position: 100%; }
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #4ecdc4, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            height: 10px;
+            margin: 1.5rem 0 0.5rem;
+            overflow: hidden;
+        }
+        
+        .bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4ecdc4, #ffd700);
+            border-radius: 50px;
+            width: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { width: 45%; }
+            50% { width: 55%; }
+        }
+        
+        .progress-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .item-icon {
+            font-size: 1.25rem;
+        }
+        
+        .item-text {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.875rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 6px 24px rgba(78, 205, 196, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(78, 205, 196, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .container { max-height: 95vh; padding: 0.5rem; }
+            .card { padding: 1.75rem 1.25rem; }
+            h1 { font-size: 1.75rem; }
+            .icon { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="icon">🎮</div>
+            <h1>Under Construction</h1>
+            <p class="subtitle">This game is being crafted! ✨</p>
+            <p class="desc">Our solo dev is working hard. Check back soon!</p>
+            
+            <div class="progress">
+                <div class="bar"></div>
+            </div>
+            <p class="progress-text">Development in progress...</p>
+            
+            <div class="features">
+                <!--<div class="item">
+                    <span class="item-icon">✅</span>
+                    <span class="item-text">Concept Complete</span>
+                </div>-->
+                <div class="item">
+                    <span class="item-icon">🔄</span>
+                    <span class="item-text">Core Mechanics in Dev</span>
+                </div>
+                <div class="item">
+                    <span class="item-icon">⏳</span>
+                    <span class="item-text">Testing Coming Soon</span>
+                </div>
+            </div>
+            
+            <a href="javascript:history.back()" class="btn">← Back to Games</a>
+        </div>
+    </div>
+</body>
+</html>
