@@ -166,7 +166,7 @@ export function toggleMobileMenu() {
 // ==== Game Functions ====
 export function playGame(gameId) {
     const gameMap = {
-        "aim": "games/aim.html
+        "aim": "games/aim.html",
         "flappy": "games/under_const.html",
         "2048": "games/under_const.html",
         "snake": "games/under_const.html",
