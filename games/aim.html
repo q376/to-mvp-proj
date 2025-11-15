@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Aim Trainer - TonArcade</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 100vh;
+            max-height: 600px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+            .game-container {
+                border-radius: 24px;
+                height: 600px;
+            }
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .stat-box {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            border: 2px solid rgba(78, 205, 196, 0.3);
+            pointer-events: none;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4ecdc4;
+        }
+
+        .start-screen, .end-screen {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .end-screen {
+            display: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #4ecdc4, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            padding: 1rem 3rem;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(78, 205, 196, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(78, 205, 196, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-card-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4ecdc4;
+        }
+
+        .instructions {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .instructions p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 0.95rem; }
+            .btn { padding: 0.875rem 2rem; font-size: 1rem; }
+            .stats-grid { gap: 1rem; }
+            .stat-card { padding: 1rem; }
+            .stat-card-value { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div class="ui-overlay">
+            <div class="stat-box">
+                <div class="stat-label">Score</div>
+                <div class="stat-value" id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Time</div>
+                <div class="stat-value" id="timer">30</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Accuracy</div>
+                <div class="stat-value" id="accuracy">100%</div>
+            </div>
+        </div>
+
+        <div class="start-screen">
+            <h1>🎯 Aim Trainer</h1>
+            <div class="instructions">
+                <p><strong>How to Play:</strong><br>
+                Click or tap the targets as fast as you can!<br>
+                You have 30 seconds. Go for the high score!</p>
+            </div>
+            <button class="btn" onclick="startGame()">Start Game</button>
+        </div>
+
+        <div class="end-screen">
+            <h1>Game Over!</h1>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-label">Final Score</div>
+                    <div class="stat-card-value" id="finalScore">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Targets Hit</div>
+                    <div class="stat-card-value" id="finalHits">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Accuracy</div>
+                    <div class="stat-card-value" id="finalAccuracy">0%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Avg Time</div>
+                    <div class="stat-card-value" id="avgTime">0ms</div>
+                </div>
+            </div>
+            <button class="btn" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let gameState = {
+            playing: false,
+            score: 0,
+            hits: 0,
+            misses: 0,
+            targets: [],
+            timeLeft: 30,
+            startTime: 0,
+            hitTimes: [],
+            gameData: {
+                clickPositions: [],
+                targetSpawns: []
+            }
+        };
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Target {
+            constructor() {
+                const minSize = 30;
+                const maxSize = 60;
+                this.radius = Math.random() * (maxSize - minSize) + minSize;
+                this.x = Math.random() * (canvas.width - this.radius * 2) + this.radius;
+                this.y = Math.random() * (canvas.height - this.radius * 2) + this.radius;
+                this.spawnTime = Date.now();
+                this.lifetime = 2000; // 2 seconds before disappear
+                this.points = Math.floor(100 / this.radius); // Smaller = more points
+                
+                gameState.gameData.targetSpawns.push({
+                    x: this.x,
+                    y: this.y,
+                    radius: this.radius,
+                    time: this.spawnTime
+                });
+            }
+
+            draw() {
+                const age = Date.now() - this.spawnTime;
+                const lifePercent = age / this.lifetime;
+                
+                // Pulsing effect
+                const pulse = Math.sin(age / 100) * 3;
+                const currentRadius = this.radius + pulse;
+
+                // Gradient
+                const gradient = ctx.createRadialGradient(
+                    this.x, this.y, 0,
+                    this.x, this.y, currentRadius
+                );
+                gradient.addColorStop(0, 'rgba(78, 205, 196, 0.8)');
+                gradient.addColorStop(0.7, 'rgba(78, 205, 196, 0.4)');
+                gradient.addColorStop(1, 'rgba(78, 205, 196, 0)');
+
+                // Main circle
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, currentRadius, 0, Math.PI * 2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+
+                // Border
+                ctx.strokeStyle = `rgba(78, 205, 196, ${1 - lifePercent})`;
+                ctx.lineWidth = 3;
+                ctx.stroke();
+
+                // Center dot
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 5, 0, Math.PI * 2);
+                ctx.fillStyle = '#ff6b6b';
+                ctx.fill();
+            }
+
+            isExpired() {
+                return Date.now() - this.spawnTime > this.lifetime;
+            }
+
+            isHit(x, y) {
+                const dx = x - this.x;
+                const dy = y - this.y;
+                return Math.sqrt(dx * dx + dy * dy) <= this.radius;
+            }
+        }
+
+        function spawnTarget() {
+            if (gameState.targets.length < 3) {
+                gameState.targets.push(new Target());
+            }
+        }
+
+        function handleClick(e) {
+            if (!gameState.playing) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            
+            let x, y;
+            if (e.type.includes('touch')) {
+                x = (e.touches[0].clientX - rect.left) * scaleX;
+                y = (e.touches[0].clientY - rect.top) * scaleY;
+            } else {
+                x = (e.clientX - rect.left) * scaleX;
+                y = (e.clientY - rect.top) * scaleY;
+            }
+
+            gameState.gameData.clickPositions.push({ x, y, time: Date.now() });
+
+            let hit = false;
+            for (let i = gameState.targets.length - 1; i >= 0; i--) {
+                if (gameState.targets[i].isHit(x, y)) {
+                    hit = true;
+                    const target = gameState.targets[i];
+                    const hitTime = Date.now() - target.spawnTime;
+                    
+                    gameState.score += target.points;
+                    gameState.hits++;
+                    gameState.hitTimes.push(hitTime);
+                    gameState.targets.splice(i, 1);
+                    
+                    // Hit effect
+                    createHitEffect(x, y);
+                    break;
+                }
+            }
+
+            if (!hit) {
+                gameState.misses++;
+                createMissEffect(x, y);
+            }
+
+            updateUI();
+        }
+
+        function createHitEffect(x, y) {
+            // Simple particle burst
+            for (let i = 0; i < 8; i++) {
+                const angle = (Math.PI * 2 * i) / 8;
+                const speed = 5;
+                particles.push({
+                    x, y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    life: 30,
+                    color: '#4ecdc4'
+                });
+            }
+        }
+
+        function createMissEffect(x, y) {
+            particles.push({
+                x, y,
+                vx: 0,
+                vy: -2,
+                life: 20,
+                color: '#ff6b6b'
+            });
+        }
+
+        let particles = [];
+
+        function updateParticles() {
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life--;
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.life / 30;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+
+                if (p.life <= 0) particles.splice(i, 1);
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('score').textContent = gameState.score;
+            const accuracy = gameState.hits + gameState.misses > 0 
+                ? Math.round((gameState.hits / (gameState.hits + gameState.misses)) * 100)
+                : 100;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+        }
+
+        function gameLoop() {
+            if (!gameState.playing) return;
+
+            // Clear canvas
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Update timer
+            const elapsed = (Date.now() - gameState.startTime) / 1000;
+            gameState.timeLeft = Math.max(0, 30 - elapsed);
+            document.getElementById('timer').textContent = Math.ceil(gameState.timeLeft);
+
+            if (gameState.timeLeft <= 0) {
+                endGame();
+                return;
+            }
+
+            // Remove expired targets
+            gameState.targets = gameState.targets.filter(t => {
+                if (t.isExpired()) {
+                    gameState.misses++;
+                    return false;
+                }
+                return true;
+            });
+
+            // Spawn new targets
+            if (Math.random() < 0.03) {
+                spawnTarget();
+            }
+
+            // Draw targets
+            gameState.targets.forEach(t => t.draw());
+
+            // Draw particles
+            updateParticles();
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function startGame() {
+            document.querySelector('.start-screen').style.display = 'none';
+            gameState = {
+                playing: true,
+                score: 0,
+                hits: 0,
+                misses: 0,
+                targets: [],
+                timeLeft: 30,
+                startTime: Date.now(),
+                hitTimes: [],
+                gameData: {
+                    clickPositions: [],
+                    targetSpawns: [],
+                    startTime: Date.now()
+                }
+            };
+            
+            spawnTarget();
+            updateUI();
+            gameLoop();
+        }
+
+        function endGame() {
+            gameState.playing = false;
+            gameState.gameData.endTime = Date.now();
+            
+            const accuracy = gameState.hits + gameState.misses > 0 
+                ? Math.round((gameState.hits / (gameState.hits + gameState.misses)) * 100)
+                : 0;
+            
+            const avgHitTime = gameState.hitTimes.length > 0
+                ? Math.round(gameState.hitTimes.reduce((a, b) => a + b, 0) / gameState.hitTimes.length)
+                : 0;
+
+            document.getElementById('finalScore').textContent = gameState.score;
+            document.getElementById('finalHits').textContent = gameState.hits;
+            document.getElementById('finalAccuracy').textContent = accuracy + '%';
+            document.getElementById('avgTime').textContent = avgHitTime + 'ms';
+            
+            document.querySelector('.end-screen').style.display = 'flex';
+
+            // Send score to parent window
+            if (window.parent) {
+                window.parent.postMessage({
+                    type: 'gameComplete',
+                    game: 'aim-trainer',
+                    score: gameState.score,
+                    data: {
+                        hits: gameState.hits,
+                        misses: gameState.misses,
+                        accuracy: accuracy,
+                        avgHitTime: avgHitTime,
+                        gameData: gameState.gameData
+                    },
+                    timestamp: Date.now()
+                }, '*');
+            }
+        }
+
+        function restartGame() {
+            document.querySelector('.end-screen').style.display = 'none';
+            startGame();
+        }
+
+        // Event listeners
+        canvas.addEventListener('click', handleClick);
+        canvas.addEventListener('touchstart', handleClick);
+
+        // Prevent context menu on long press
+        canvas.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
