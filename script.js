@@ -166,14 +166,22 @@ export function toggleMobileMenu() {
 // ==== Game Functions ====
 export function playGame(gameId) {
     const gameMap = {
-        "flappy": "games/flappy/index.html",
+        "flappy": "games/under_const.html",
+        "2048": "games/under_const.html",
+        "snake": "games/under_const.html",
+        "memory": "games/under_const.html",
+        "pong": "games/under_const.html",
+        "reaction": "games/under_const.html",
+        "breakout": "games/under_const.html",
+        "minesweeper": "games/under_const.html",
+        /*"flappy": "games/flappy/index.html",
         "2048": "games/2048/index.html",
         "snake": "games/snake/snaki.html",
         "memory": "games/memory/index.html",
         "pong": "games/pong.html",
         "reaction": "games/reaction.html",
         "breakout": "games/breakout/index.html",
-        "minesweeper": "games/minesweeper/index.html",
+        "minesweeper": "games/minesweeper/index.html",*/
     };
 
     const gameUrl = gameMap[gameId];
