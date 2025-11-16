@@ -1,7 +1,7 @@
 {
   "url": "https://tonarcade.netlify.app",
   "name": "TonArcade",
-  "iconUrl": "https://tonarcade.netlify.app/icons/android-chrome-512x512.png",
+  "iconUrl": "https://tonarcade.netlify.app/icons/favicon.svg",
   "termsOfUseUrl": "https://tonarcade.netlify.app/legal.html",
   "privacyPolicyUrl": "https://tonarcade.netlify.app/legal.html"
 }
