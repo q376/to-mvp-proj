@@ -13,7 +13,7 @@ let currentWallet = null;
 // ==== TON Connect Initialization ====
 export function initTonConnect() {
     tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://tonnaton.netlify.app/tonconnect-manifest.json',
+        manifestUrl: 'https://tonarcade.netlify.app/tonconnect-manifest.json',
         buttonRootId: 'ton-connect-button'
     });
 
