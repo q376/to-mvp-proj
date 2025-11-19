@@ -167,7 +167,8 @@ export function toggleMobileMenu() {
 export function playGame(gameId) {
     const gameMap = {
         "aim": "games/aim/index.html",
-        "color":, "games/color/index.html",
+        "color": "games/color/index.html",
+        "reflex": "games/reaction/index.html",
     };
 
     const gameUrl = gameMap[gameId];
